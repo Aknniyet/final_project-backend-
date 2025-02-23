@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     async function loadRecipes() {
         try {
-            const response = await fetch("http://localhost:3000/api/recipes");
+            const response = await fetch("/api/recipes");
             if (!response.ok) throw new Error("Failed to fetch recipes");
 
             allRecipes = await response.json();
@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const token = localStorage.getItem("token");
             if (!token) return;
 
-            const response = await fetch("http://localhost:3000/api/users/favorites", {
+            const response = await fetch("/api/users/favorites", {
                 method: "GET",
                 headers: {
                     "Authorization": "Bearer " + token
@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         recipes.forEach(recipe => {
-            const imageUrl = recipe.image ? `http://localhost:3000${recipe.image}` : "https://via.placeholder.com/300";
+            const imageUrl = recipe.image ? `${recipe.image}` : "https://via.placeholder.com/300";
             const recipeCard = document.createElement("div");
             recipeCard.classList.add("recipe-card");
 
@@ -90,7 +90,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         favoriteRecipes.forEach(recipe => {
-            const imageUrl = recipe.image ? `http://localhost:3000${recipe.image}` : "https://via.placeholder.com/300";
+            const imageUrl = recipe.image ? `${recipe.image}` : "https://via.placeholder.com/300";
             const recipeCard = document.createElement("div");
             recipeCard.classList.add("recipe-card");
 
@@ -153,7 +153,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (!confirm("Are you sure you want to delete this recipe?")) return;
 
         const token = localStorage.getItem("token");
-        await fetch(`http://localhost:3000/api/recipes/${id}`, {
+        await fetch(`/api/recipes/${id}`, {
             method: "DELETE",
             headers: { "Authorization": `Bearer ${token}` }
         });
@@ -170,7 +170,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const token = localStorage.getItem("token");
             if (!token) return;
 
-            const response = await fetch("http://localhost:3000/api/users/favorites", {
+            const response = await fetch("/api/users/favorites", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -203,7 +203,7 @@ document.addEventListener("DOMContentLoaded", function () {
     
             const userLiked = likedRecipes[recipeId] || false;
     
-            const response = await fetch("http://localhost:3000/api/users/likes", {
+            const response = await fetch("/api/users/likes", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -240,7 +240,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (role !== "admin") {
         document.getElementById("showFavorites").addEventListener("click", showFavorites);
     } else {
-        document.getElementById("showFavorites").style.display = "none"; // Скрыть кнопку для админа
+        document.getElementById("showFavorites").style.display = "none";
     }
 
     window.toggleFavorite = toggleFavorite;

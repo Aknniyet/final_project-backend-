@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
 
     try {
-        const response = await fetch("http://localhost:3000/api/recipes", {
+        const response = await fetch("/api/recipes", {
             headers: { "Authorization": `Bearer ${token}` }
         });
 
@@ -37,7 +37,7 @@ async function deleteRecipe(recipeId) {
     if (!confirm("Are you sure you want to delete this recipe?")) return;
 
     try {
-        const response = await fetch(`http://localhost:3000/api/recipes/${recipeId}`, {
+        const response = await fetch(`/api/recipes/${recipeId}`, {
             method: "DELETE",
             headers: { "Authorization": `Bearer ${token}` }
         });

@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Fetch and load the current recipe data
-    fetch(`http://localhost:3000/api/recipes/${recipeId}`)
+    fetch(`/api/recipes/${recipeId}`)
         .then(response => response.json())
         .then(recipe => {
             console.log("Current recipe data:", recipe);
@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         try {
             console.log("Sending data to the server...");
-            const response = await fetch(`http://localhost:3000/api/recipes/${recipeId}`, {
+            const response = await fetch(`/api/recipes/${recipeId}`, {
                 method: "PUT",
                 headers: {
                     "Authorization": `Bearer ${token}` // Attach authentication token

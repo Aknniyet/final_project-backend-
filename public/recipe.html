@@ -31,12 +31,12 @@
                 return;
             }
 
-            fetch(`http://localhost:3000/api/recipes/${recipeId}`)
+            fetch(`/api/recipes/${recipeId}`)
                 .then(response => response.json())
                 .then(recipe => {
                     document.getElementById("recipeDetails").innerHTML = `
                         <div class="recipe-content">
-                            <img src="http://localhost:3000${recipe.image}" alt="Recipe Image">
+                            <img src="${recipe.image}" alt="Recipe Image">
                             <h1>${recipe.title}</h1>
                             <p><strong>Ingredients:</strong> ${recipe.ingredients.join(', ')}</p>
                             <p><strong>Instructions:</strong> ${recipe.instructions}</p>

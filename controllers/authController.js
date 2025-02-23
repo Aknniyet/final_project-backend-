@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 
 exports.register = async (req, res) => {
     try {
-        console.log("Received data:", req.body); // ✅ Лог для отладки
+        console.log("Received data:", req.body); 
         const { username, email, password, role } = req.body;
         
         let user = await User.findOne({ email });

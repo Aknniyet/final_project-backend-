@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         try {
             // Send recipe data to the server
-            const response = await fetch("http://localhost:3000/api/recipes", {
+            const response = await fetch("/api/recipes", {
                 method: "POST",
                 headers: { "Authorization": `Bearer ${token}` }, // Include authorization token
                 body: formData 

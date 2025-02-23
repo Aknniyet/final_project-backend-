@@ -3,14 +3,14 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
     
-    const response = await fetch("http://localhost:3000/api/auth/login", {
+    const response = await fetch("/api/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password })
     });
     
     const data = await response.json();
-    console.log("Login response:", data); // ✅ Лог в консоли браузера
+    console.log("Login response:", data); 
 
     if (response.ok) {
         localStorage.setItem("token", data.token);
@@ -28,14 +28,14 @@ document.getElementById("registerForm").addEventListener("submit", async (e) => 
     const password = document.getElementById("regPassword").value;
     const role = document.getElementById("role").value;
     
-    const response = await fetch("http://localhost:3000/api/auth/register", {
+    const response = await fetch("/api/auth/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, email, password, role })
     });
     
     const data = await response.json();
-    console.log("Register response:", data); // ✅ Лог в консоли браузера
+    console.log("Register response:", data); 
     
     if (response.ok) {
         alert("Registration successful! Please login.");
