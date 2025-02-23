@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+    <div class="sidebar">
+        <a href="dashboard.html">Home</a>
+        <a href="admin-dashboard.html">Admin Panel</a>
+        <a href="#" id="logout">Logout</a>
+    </div>
+
+    <div class="container">
+        <h1>Admin Panel</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="recipeList"></tbody>
+        </table>
+    </div>
+
+    <script src="../scripts/admin-dashboard.js"></script>
+</body>
+</html>

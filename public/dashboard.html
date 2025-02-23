@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Dashboard</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+    <div class="sidebar">
+        <a href="dashboard.html" class="active">Home</a>
+        <a href="add-recipe.html" id="addRecipeNav">Add Recipe</a>
+        <a href="#" id="logout">Logout</a>
+    </div>
+
+    <div class="container-ds">
+        <h2>Recipe Dashboard</h2>
+
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search recipes..." class="search-bar">
+            <select id="categoryFilter" class="search-bar">
+                <option value="">All Categories</option>
+                <option value="Breakfast">Breakfast</option>
+                <option value="Lunch">Lunch</option>
+                <option value="Dinner">Dinner</option>
+                <option value="Dessert">Dessert</option>
+                <option value="Drinks">Drinks</option>
+            </select>
+            <button id="searchButton" class="search-button">Search</button>
+            <button id="showFavorites">Show Favorites</button>
+
+        </div>
+
+        <div class="recipe-grid" id="recipeList"></div>
+    </div>
+
+    <script src="../scripts/dashboard.js" defer></script>
+</body>
+</html>

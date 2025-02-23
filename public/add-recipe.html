@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Recipe</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+    <div class="sidebar">
+        <a href="dashboard.html">Home</a>
+        <a href="add-recipe.html" class="active">Add Recipe</a>
+        <a href="#" id="logout">Logout</a>
+    </div>
+
+    <div class="container">
+        <div class="form-container">
+            <h1>Add New Recipe</h1>
+            <form id="recipeForm"> 
+                <input type="text" id="title" placeholder="Recipe Title" required>
+                <textarea id="ingredients" placeholder="Ingredients (comma-separated)" required></textarea>
+                <textarea id="instructions" placeholder="Instructions" required></textarea>
+
+                <select id="category" required>
+                    <option value="">Select Category</option>
+                    <option value="Breakfast">Breakfast</option>
+                    <option value="Lunch">Lunch</option>
+                    <option value="Dinner">Dinner</option>
+                    <option value="Dessert">Dessert</option>
+                    <option value="Drinks">Drinks</option>
+                </select>
+
+                <input type="file" id="image" accept="image/*">
+                <button type="submit">Add Recipe</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+       document.addEventListener("DOMContentLoaded", function () {
+            const role = localStorage.getItem("role");
+
+            if (role !== "admin") {
+                alert("You do not have access to this page.");
+                window.location.href = "dashboard.html";
+            }
+        });
+    </script>
+
+    <script src="../scripts/recipes.js" defer></script> 
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Recipe</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+    <div class="sidebar">
+        <a href="dashboard.html">Home</a>
+        <a href="add-recipe.html">Add Recipe</a>
+        <a href="#" id="logout">Logout</a>
+    </div>
+
+    <div class="container">
+        <div class="form-container">
+            <h1>Edit Recipe</h1>
+            <form id="editRecipeForm">
+                <input type="text" id="title" placeholder="Recipe Title" required>
+                <textarea id="ingredients" placeholder="Ingredients (comma-separated)" required></textarea>
+                <textarea id="instructions" placeholder="Instructions" required></textarea>
+                <input type="file" id="image" accept="image/*">
+                <div class="buttons">
+                <button type="submit">Save Changes</button>
+                <button type="button" id="backButton">Back</button>
+            </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        document.getElementById("backButton").addEventListener("click", function () {
+            window.location.href = "dashboard.html";
+        });
+    </script>
+    <script src="../scripts/edit-recipe.js"></script>
+
+</body>
+</html>
