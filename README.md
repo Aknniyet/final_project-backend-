@@ -54,6 +54,7 @@ The system is divided into three key layers:
 | Database       | MongoDB (Mongoose ORM) |
 | Authentication | JWT (JSON Web Tokens) |
 | Security       | bcrypt |
+| Deployment     | Render |
 
 ## 📂 Project Structure
 ```
@@ -174,5 +175,6 @@ npm start
 
 
 ---
+🌐 Website: https://final-project-backend-fkxb.onrender.com
 Made with ❤️ by Akniyet & Danel & Darina 🚀
 
