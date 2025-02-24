@@ -1,4 +1,4 @@
-# Recipe App
+# Recipe Website
 
 ## 📌 Project Goals
 Recipe App is a web application designed to provide users with a platform to explore, save, and like various recipes. The application follows a **Role-Based Access Control (RBAC)** system, ensuring that only administrators can add, modify, and delete recipes, while users can interact with recipes by liking and saving them.
@@ -58,7 +58,7 @@ The system is divided into three key layers:
 
 ## 📂 Project Structure
 ```
-recipe-app/
+final/
 │── config/            # Configuration files
 │── controllers/       # Controllers handling logic
 │── middleware/        # Authentication & security middleware
@@ -79,7 +79,7 @@ recipe-app/
 
 ### 1️⃣ Clone the repository
 ```sh
-  git clone https://github.com/Aknniyet/recipe-app.git
+  git clone https://github.com/Aknniyet/final_project-backend-.git
   cd RecipeApp
 ```
 
