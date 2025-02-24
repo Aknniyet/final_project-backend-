@@ -58,25 +58,20 @@ The system is divided into three key layers:
 ## 📂 Project Structure
 ```
 recipe-app/
-│── backend/               # Server-side application
-│   ├── models/            # Mongoose models (User, Recipe, Favorite, Like)
-│   ├── routes/            # API routes
-│   ├── controllers/       # Controllers handling logic
-│   ├── middleware/        # Authentication & security middleware
-│   ├── config/            # Configuration files
-│   ├── server.js          # Main server file
-│
-│── frontend/              # Client-side application
-│   ├── public/
-│   │   ├── index.html     # Main page
-│   │   ├── dashboard.html # User dashboard
-│   │   ├── recipe.html    # Recipe details page
-│   │   ├── styles/        # CSS styles
-│   │   ├── scripts/       # JavaScript scripts
-│
+│── config/            # Configuration files
+│── controllers/       # Controllers handling logic
+│── middleware/        # Authentication & security middleware
+│── models/            # Mongoose models (User, Recipe, Favorite, Like)
+│── node_modules/
+│── public
+│── routes/            # API routes
+│── uploads
 │── .env                   # Environment variables
+│── .gitignore
 │── README.md              # Project documentation
+│── package-lock.json
 │── package.json           # Dependencies & scripts
+│── server.js
 ```
 
 ## 🛠️ Installation
