@@ -3,8 +3,10 @@ document.addEventListener("DOMContentLoaded", function () {
     let favoriteRecipes = [];
     const role = localStorage.getItem("role");
 
+    // Function to load all recipes from the API
     async function loadRecipes() {
         try {
+            // Fetch the recipes from the server endpoint
             const response = await fetch("/api/recipes");
             if (!response.ok) throw new Error("Failed to fetch recipes");
 
@@ -19,6 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     async function loadFavorites() {
         try {
+            // Retrieve the auth token from localStorage
             const token = localStorage.getItem("token");
             if (!token) return;
 
@@ -31,6 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             if (!response.ok) throw new Error("Failed to load favorites");
 
+            // Parse and store the favorite recipes
             favoriteRecipes = await response.json();
         } catch (error) {
             console.error("Error loading favorites:", error);
@@ -45,6 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
+        // Loop through each recipe in the array
         recipes.forEach(recipe => {
             const imageUrl = recipe.image ? `${recipe.image}` : "https://via.placeholder.com/300";
             const recipeCard = document.createElement("div");
@@ -76,11 +81,15 @@ document.addEventListener("DOMContentLoaded", function () {
                 </div>
                 <div class="buttons">${buttons}</div>
             `;
+            
+            // Append the completed recipe card to the container element
             recipeContainer.appendChild(recipeCard);
         });
     }
 
     function showFavorites() {
+
+        // Get the container element for recipes and clear its current content
         const recipeContainer = document.getElementById("recipeList");
         recipeContainer.innerHTML = "";
 
@@ -89,6 +98,7 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
+        // Loop through each favorite recipe to create and display its card
         favoriteRecipes.forEach(recipe => {
             const imageUrl = recipe.image ? `${recipe.image}` : "https://via.placeholder.com/300";
             const recipeCard = document.createElement("div");
@@ -111,6 +121,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function filterRecipes() {
+        // Retrieve and normalize the search input value
         const searchValue = document.getElementById("searchInput").value.toLowerCase().trim();
         const selectedCategory = document.getElementById("categoryFilter").value;
 
@@ -122,10 +133,12 @@ document.addEventListener("DOMContentLoaded", function () {
             filteredRecipes = filteredRecipes.filter(recipe => recipe.category === selectedCategory);
         }
 
+        // Update the displayed recipes with the filtered list
         displayRecipes(filteredRecipes);
     }
 
     function populateCategories(recipes) {
+        // Get the category filter dropdown element
         const categoryFilter = document.getElementById("categoryFilter");
         const categories = ["All Categories", ...new Set(recipes.map(recipe => recipe.category).filter(Boolean))];
 
@@ -139,16 +152,20 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
+    // Trigger filtering when the search button is clicked
     document.getElementById("categoryFilter").addEventListener("change", filterRecipes);
 
+    // Global function to view a recipe    
     window.viewRecipe = function (id) {
         window.location.href = `recipe.html?id=${id}`;
     };
 
+    // Global function to edit a recipe
     window.editRecipe = function (id) {
         window.location.href = `edit-recipe.html?id=${id}`;
     };
 
+    // Global function to delete a recipe with confirmation and API call
     window.deleteRecipe = async function (id) {
         if (!confirm("Are you sure you want to delete this recipe?")) return;
 
@@ -162,6 +179,7 @@ document.addEventListener("DOMContentLoaded", function () {
         loadRecipes();
     };
 
+    // Function to toggle the favorite status for a recipe
     async function toggleFavorite(recipeId, event) {
         if (event) event.preventDefault();
         try {
@@ -169,7 +187,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const token = localStorage.getItem("token");
             if (!token) return;
-
+        
+            // Send a POST request to update the favorite status for the recipe
             const response = await fetch("/api/users/favorites", {
                 method: "POST",
                 headers: {
@@ -181,6 +200,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             if (!response.ok) throw new Error("Failed to update favorites");
 
+            // Reload the recipes to reflect the updated favorite status            
             loadRecipes();
         } catch (error) {
             console.error("Error updating favorites:", error);
@@ -200,7 +220,8 @@ document.addEventListener("DOMContentLoaded", function () {
     
             const userId = localStorage.getItem("userId");
             let likedRecipes = JSON.parse(localStorage.getItem("likedRecipes")) || {};
-    
+            
+            // Check whether the user has already liked this recipe
             const userLiked = likedRecipes[recipeId] || false;
     
             const response = await fetch("/api/users/likes", {
@@ -224,7 +245,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 likedRecipes[recipeId] = true; 
                 data.likes.length++; 
             }
-    
+
+            // Save the updated likedRecipes back to localStorage for persistence
             localStorage.setItem("likedRecipes", JSON.stringify(likedRecipes));
     
             if (likeButton) {
@@ -243,9 +265,11 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("showFavorites").style.display = "none";
     }
 
+    // Expose the toggle functions globally so they can be called from inline HTML events
     window.toggleFavorite = toggleFavorite;
     window.toggleLike = toggleLike;
 
+    // Add an event listener for the logout button
     document.getElementById("logout").addEventListener("click", () => {
         localStorage.removeItem("token");
         localStorage.removeItem("role");

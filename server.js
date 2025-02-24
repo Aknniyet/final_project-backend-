@@ -16,6 +16,8 @@ const corsOptions = {
     credentials: true
 };
 app.use(cors(corsOptions));
+
+// Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -39,4 +41,4 @@ app.use('/api/auth', authRoutes);
 app.use('/api/recipes', recipeRoutes);
 app.use('/api/users', userRoutes);
 
-app.listen(PORT, () => console.log(`✅ Server running on http://localhost:${PORT}`));
+app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));

@@ -32,6 +32,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
 });
 
+// Function to delete a recipe
 async function deleteRecipe(recipeId) {
     const token = localStorage.getItem("token");
     if (!confirm("Are you sure you want to delete this recipe?")) return;
@@ -42,6 +43,7 @@ async function deleteRecipe(recipeId) {
             headers: { "Authorization": `Bearer ${token}` }
         });
 
+        // If deletion is successful, notify the user and reload the page
         if (response.ok) {
             alert("Recipe deleted!");
             window.location.reload();

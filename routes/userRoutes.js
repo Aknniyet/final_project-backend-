@@ -2,7 +2,6 @@ const express = require("express");
 const userController = require("../controllers/userController"); 
 const authMiddleware = require("../middleware/authMiddleware").authMiddleware;
 
-
 const router = express.Router();
 
 router.post("/favorites", authMiddleware, userController.toggleFavorite);
