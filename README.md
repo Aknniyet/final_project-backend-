@@ -66,11 +66,11 @@ recipe-app/
 │── public
 │── routes/            # API routes
 │── uploads
-│── .env                   # Environment variables
+│── .env               # Environment variables
 │── .gitignore
-│── README.md              # Project documentation
+│── README.md          # Project documentation
 │── package-lock.json
-│── package.json           # Dependencies & scripts
+│── package.json       # Dependencies & scripts
 │── server.js
 ```
 
