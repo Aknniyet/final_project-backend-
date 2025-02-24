@@ -71,7 +71,7 @@ recipe-app/
 │── README.md          # Project documentation
 │── package-lock.json
 │── package.json       # Dependencies & scripts
-│── server.js
+│── server.js          # Main server file
 ```
 
 ## 🛠️ Installation
